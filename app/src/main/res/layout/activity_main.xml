@@ -4,15 +4,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/ciemno_szary"
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/AppName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="InfoGrabber"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/Test"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="example"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/AppWebsiteTitle"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:background="@color/linia"
+        app:layout_constraintBottom_toTopOf="@+id/AppWebsiteTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="wrap_content"
+        android:layout_height="1px"
+        android:background="@color/linia"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/AppName"
+        tools:layout_editor_absoluteY="587dp" />
+
+    <Button
+        android:id="@+id/AppAddButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/circular_button"
+        android:text="Add"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/AppDeleteButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/AppDeleteButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/circular_button"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Delete"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/AppWebsiteURL"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:hint="Enter website URL"
+        android:textColorHint="@color/linia"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/AppWebsiteSeconds"
+        app:layout_constraintEnd_toStartOf="@+id/AppDeleteButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/AppWebsiteTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:hint="Enter website name (optional)"
+        android:textColorHint="@color/linia"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/AppWebsiteURL"
+        app:layout_constraintEnd_toStartOf="@+id/AppDeleteButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/AppWebsiteSeconds"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="10dp"
+        android:digits="0123456789"
+        android:textColor="@color/white"
+        android:hint="Time interval in seconds"
+        android:inputType="number"
+        android:textColorHint="@color/linia"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/AppDeleteButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/AppWebsiteList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/AppWebsiteTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AppName" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
