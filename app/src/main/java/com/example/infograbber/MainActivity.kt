@@ -2,6 +2,7 @@ package com.example.infograbber
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,11 +30,20 @@ class MainActivity : AppCompatActivity() {
 
         AppAddButton.setOnClickListener {
             val websiteURL: String = AppWebsiteURL.text.toString()
-            val websiteTimeInterval: String = AppWebsiteSeconds.text.toString()
             val websiteTitle: String = AppWebsiteTitle.text.toString()
+            val websiteTimeInterval: Int
 
-            val website: Website = Website(this@MainActivity, websiteTitle, websiteURL, websiteTimeInterval.toInt())
-            WebsiteAdapter.addWebsite(website)
+            try{
+                websiteTimeInterval = AppWebsiteSeconds.text.toString().toInt()
+                val website = Website(this@MainActivity, websiteTitle, websiteURL, websiteTimeInterval)
+                WebsiteAdapter.addWebsite(website)
+            }
+            catch (e:NumberFormatException){
+                println("HERE we go")
+                Toast.makeText(applicationContext, "Wrong value for duration", Toast.LENGTH_LONG).show()
+            }
+
+
 
             //Clearing out input fields
             AppWebsiteSeconds.text.clear()
