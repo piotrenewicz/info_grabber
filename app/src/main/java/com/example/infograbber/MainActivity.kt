@@ -30,6 +30,12 @@ class MainActivity : AppCompatActivity() {
         null
     }
 
+    private fun findWebsiteDomain(url: String): String = try{
+        Regex("^(?:https?:\\/\\/)?(?:[^@\n]+@)?(?:www\\.)?([^:\\/\n?]+)").find(url)!!.groupValues[1]
+    }catch(e: java.lang.NullPointerException){
+        "Unknown domain"
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -52,10 +58,11 @@ class MainActivity : AppCompatActivity() {
             val websiteURL: String = AppWebsiteURL.text.toString()
             val websiteTitle: String = AppWebsiteTitle.text.toString()
             val websiteTimeInterval: Int
+            val websiteDomain: String = findWebsiteDomain(websiteURL)
 
             try{
                 websiteTimeInterval = AppWebsiteSeconds.text.toString().toInt()
-                val website = Website(this@MainActivity, websiteTitle, websiteURL, websiteTimeInterval)
+                val website = Website(this@MainActivity, websiteTitle, websiteURL, websiteTimeInterval, websiteDomain)
                 WebsiteAdapter.addWebsite(website)
             }
             catch (e:NumberFormatException){
