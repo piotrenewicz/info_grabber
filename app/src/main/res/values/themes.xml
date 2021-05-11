@@ -14,10 +14,20 @@
         <!-- Customize your theme here. -->
 
     </style>
+
     <style name="NumberPickerTheme" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@android:color/white</item>
         <item name="colorControlNormal">@android:color/transparent</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:background">@color/ciemno_szary</item>
     </style>
+
+    <style name="Theme.InfoGrabber.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.InfoGrabber.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.InfoGrabber.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
