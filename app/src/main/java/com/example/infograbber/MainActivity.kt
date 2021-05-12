@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         AppAddButton.setOnClickListener{
-            val intent = Intent(this, AddWebsiteActivity::class.java)
+            val intent = Intent(this, fsrw_example::class.java)
             startActivity(intent)
         }
 

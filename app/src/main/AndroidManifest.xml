@@ -15,7 +15,8 @@
         <activity
             android:name=".AddWebsiteActivity"
             android:label="@string/title_activity_add_website"
-            android:theme="@style/Theme.InfoGrabber.NoActionBar"></activity>
+            android:theme="@style/Theme.InfoGrabber.NoActionBar" />
+        <activity android:name=".fsrw_example" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
