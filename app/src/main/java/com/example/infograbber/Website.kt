@@ -1,10 +1,5 @@
 package com.example.infograbber
+import org.jsoup.nodes.Document
 
-import android.content.Context
-
-class Website(context: Context,
-              val title: String,
-              val URL:String,
-              val timeInterval: Int,
-              val domain: String = "example.com",
-              var isChecked: Boolean = false) {}
+data class Website(val title: String, val URL:String, val timeInterval: Int, val awlCommand: String = "", val source: Document? = null,
+              val domain: String = "example.com", var isChecked: Boolean = false)
