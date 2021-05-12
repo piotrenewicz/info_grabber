@@ -1,12 +1,14 @@
 @file:JvmName("fsio")
 
 package com.example.infograbber
-//import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.io.*
+import java.io.FileInputStream
+import java.io.FileNotFoundException
+import java.io.FileOutputStream
+import java.io.IOException
 
 const val defaultFileName:String = "infoStorage.json"
 
@@ -17,7 +19,7 @@ fun fsinit(): String{
 }
 
 fun fswrite(c: Context, data: String, fileName:String = defaultFileName){
-    val fileOutputStream:FileOutputStream
+    val fileOutputStream: FileOutputStream
     try{
         fileOutputStream = c.openFileOutput(fileName, Context.MODE_PRIVATE)
         fileOutputStream.write(data.toByteArray())
@@ -35,7 +37,7 @@ fun fswrite(c: Context, data: String, fileName:String = defaultFileName){
 
 fun fsread(c: Context, fileName: String = defaultFileName): String{
     val data: String
-    val fileInputStream:FileInputStream
+    val fileInputStream: FileInputStream
     try{
         fileInputStream = c.openFileInput(fileName)
         data = fileInputStream.bufferedReader().readText()
