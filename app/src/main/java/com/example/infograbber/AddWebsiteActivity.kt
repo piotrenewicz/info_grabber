@@ -78,8 +78,10 @@ class AddWebsiteActivity : AppCompatActivity() {
                     result = websiteSource.html()
 
                     if(websiteTimeInterval > 0){
-                        val website: Website = Website(websiteTitle, websiteURL, websiteTimeInterval, websiteCommand, websiteSource, websiteDomain)
+                        // HERE TO FIX: website source is too long to be serialized, must be removed from class constructor
+                        val website: Website = Website(websiteTitle, websiteURL, websiteTimeInterval, websiteCommand, "websiteSource.toString()", websiteDomain)
                         //Here goes code for inserting website into JSON database
+                        writeWebsite(applicationContext,website)
                     }
                 }
                 println("Website: $result")

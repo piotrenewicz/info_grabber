@@ -3,12 +3,16 @@
 package com.example.infograbber
 //import androidx.appcompat.app.AppCompatActivity
 import android.content.Context
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import java.io.*
 
 const val defaultFileName:String = "infoStorage.json"
 
 fun fsinit(): String{
-    return "Storage not initialized!\nReturning defaults"
+    println("Storage not initialized!\nReturning defaults")
+    return "[]"
 
 }
 
@@ -48,4 +52,24 @@ fun fsread(c: Context, fileName: String = defaultFileName): String{
     }
 
     return fsinit()
+}
+
+
+fun websiteListToJsonString(sites: List<Website>): String {
+    return Json.encodeToString(sites)
+}
+
+fun jsonStringToWebsiteList(jstr:String): MutableList<Website> {
+    return Json.decodeFromString<MutableList<Website>>(jstr)
+}
+
+fun writeWebsite(c:Context, site:Website, fileName: String=defaultFileName){
+    val list:MutableList<Website> = jsonStringToWebsiteList(fsread(c,fileName))
+    println("GOT DATA $list")
+    list.add(site)
+
+    val dataString = websiteListToJsonString(list)
+    fswrite(c,dataString,fileName)
+    println("DATAAAA $dataString")
+
 }
