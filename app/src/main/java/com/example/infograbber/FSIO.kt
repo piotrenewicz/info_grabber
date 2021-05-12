@@ -62,11 +62,16 @@ fun websiteListToJsonString(sites: List<Website>): String {
 }
 
 fun jsonStringToWebsiteList(jstr:String): MutableList<Website> {
-    return Json.decodeFromString<MutableList<Website>>(jstr)
+    return Json.decodeFromString(jstr)
+}
+
+// USE THIS THING TO LOAD YOUR LIST OF WEBSITES my brothers.
+fun readWebsiteList(c:Context, fileName: String=defaultFileName):MutableList<Website>{
+    return jsonStringToWebsiteList(fsread(c,fileName))
 }
 
 fun writeWebsite(c:Context, site:Website, fileName: String=defaultFileName){
-    val list:MutableList<Website> = jsonStringToWebsiteList(fsread(c,fileName))
+    val list:MutableList<Website> = readWebsiteList(c)
     println("GOT DATA $list")
     list.add(site)
 
