@@ -29,5 +29,16 @@ class MainActivity : AppCompatActivity() {
         //Adding example website to recyclerView Adapter
         WebsiteAdapter.addWebsite(website)
 
+        // START try json read
+        // No sites no data – add one via application and restart it, it works
+        // How to refresh this list when we enter into this activity, not only on creation?
+        val websites = readWebsiteList(applicationContext)
+        for (site in websites)
+        {
+            println("WEBSITE $site")
+            WebsiteAdapter.addWebsite(site)
+        }
+        // END try json read
+
     }
 }
