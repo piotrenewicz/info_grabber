@@ -1,5 +1,13 @@
 package com.example.infograbber
-import org.jsoup.nodes.Document
+import kotlinx.serialization.Serializable
 
-data class Website(val title: String, val URL:String, val timeInterval: Int, val awlCommand: String = "", val source: Document? = null,
-              val domain: String = "example.com", var isChecked: Boolean = false)
+
+
+@Serializable
+data class Website(val title: String,
+                   val URL:String,
+                   val timeInterval: Int,
+                   val awlCommand: String = "",
+                   val source: String = "",
+                   val domain: String = "https://www.example.com",
+                   var isChecked: Boolean = false)
