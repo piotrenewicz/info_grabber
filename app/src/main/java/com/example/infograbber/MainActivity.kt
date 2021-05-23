@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         AppWebsiteList.layoutManager = LinearLayoutManager(this)
 
         AppAddButton.setOnClickListener{
-            val intent = Intent(this, AddWebsiteActivity::class.java)
+            val intent = Intent(this, fsrw_example::class.java)
             startActivity(intent)
         }
 
