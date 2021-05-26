@@ -17,6 +17,7 @@ private suspend fun getWebsiteSource(context: Context, URL: String): Document? =
     println(doc.title())
     doc
 }catch(e: Exception){
+    e.printStackTrace()
     withContext(Dispatchers.Main){
         Toast.makeText(context, "Error fetching URL", Toast.LENGTH_LONG).show()
     }

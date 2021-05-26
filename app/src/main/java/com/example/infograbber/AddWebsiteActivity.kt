@@ -19,8 +19,14 @@ class AddWebsiteActivity : AppCompatActivity() {
     //private lateinit var WebsiteAdapter: WebsiteAdapter
 
     private suspend fun getWebsiteSource(context: Context, URL: String): Document? = try {
+        withContext(Dispatchers.Main){
+            AddWebsiteHTMLCode.text = "Test Test Test\nTest\nTest\nTest\nTest"
+        }
         val doc: Document = Jsoup.connect(URL).get()
         println(doc.title())
+        withContext(Dispatchers.Main){
+            AddWebsiteHTMLCode.text = doc.html()
+        }
         doc
     }catch(e: Exception){
         withContext(Dispatchers.Main){
@@ -67,30 +73,33 @@ class AddWebsiteActivity : AppCompatActivity() {
                 websiteTimeInterval = AddWebsiteSeconds.text.toString().toInt()
             }
 
-            CoroutineScope(Dispatchers.IO).launch(){
-                val websiteSource: Document? = getWebsiteSource(this@AddWebsiteActivity, websiteURL)
-                var result: String= ""
-                if (websiteSource == null){
-                    result = "Error while fetching website"
-                }else{
-                    websiteTitle = if(websiteTitle.isEmpty()) websiteSource.title() else websiteTitle
-                    result = websiteSource.html()
-
-                    if(websiteTimeInterval > 0){
-                        // HERE TO FIX: website source is too long to be serialized, must be removed from class constructor
-                        val website: Website = Website(websiteTitle, websiteURL, websiteTimeInterval, websiteCommand, "websiteSource.toString()", websiteDomain)
-                        //Here goes code for inserting website into JSON database
-                        writeWebsite(applicationContext,website)
-                    }
-                }
-                println("Website: $result")
-            }
-
+            val website: Website = Website(websiteTitle, websiteURL, websiteTimeInterval, websiteCommand,  websiteDomain)
+            writeWebsite(applicationContext,website)
             //Clearing out input fields
             AddWebsiteSeconds.text.clear()
             AddWebsiteURL.text.clear()
             AddWebsiteTitle.text.clear()
             AddWebsiteCommand.text.clear()
         }
+
+        AddWebsiteTest.setOnClickListener{
+            val websiteURL: String = AddWebsiteURL.text.toString()
+            downloadhtml(this, websiteURL){ result ->
+                runOnUiThread {
+                    AddWebsiteHTMLCode.text = result
+                }
+            }
+
+        }
+
+        //   use like this:
+//
+//            downloadhtml(this, url){ result ->
+//                runOnUiThread {
+//                    // Stuff that updates the UI
+//                    fileData.setText(result)
+//                }
+//            }
+
     }
 }
