@@ -23,7 +23,7 @@ private suspend fun getWebsiteSource(context: Context, URL: String): Document? =
     null
 }
 
-fun downloadhtml(c: Context, URL: String, callback) {
+fun downloadhtml(c: Context, URL: String, callback: (result: String?) -> Unit) {
     CoroutineScope(Dispatchers.IO).launch() {
         val websiteSource: Document? = getWebsiteSource(c, URL)
         var result: String = ""
@@ -33,6 +33,15 @@ fun downloadhtml(c: Context, URL: String, callback) {
             result = websiteSource.html()
         }
         println("Website: $result")
-        callback(result)
+        callback.invoke(result)
     }
 }
+
+//   use like this:
+//
+//            downloadhtml(this, url){ result ->
+//                runOnUiThread {
+//                    // Stuff that updates the UI
+//                    fileData.setText(result)
+//                }
+//            }

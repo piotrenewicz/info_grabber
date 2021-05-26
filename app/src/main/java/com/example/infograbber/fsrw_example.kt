@@ -1,11 +1,11 @@
 package com.example.infograbber
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+
 //import android.widget.Toast
 //import java.io.*
 
@@ -19,10 +19,6 @@ class fsrw_example : AppCompatActivity(){
 
         val btnView = findViewById<Button>(R.id.btnView)
 
-
-        fun update_data(data: String){
-            fileData.setText(data)
-        }
 
         btnView.setOnClickListener(View.OnClickListener {
             val filename = fileName.text.toString()
@@ -41,7 +37,12 @@ class fsrw_example : AppCompatActivity(){
 //            }else{
 //                Toast.makeText(applicationContext,"file name cannot be blank",Toast.LENGTH_LONG).show()
 //            }
-            downloadhtml(this, filename, update_data)
+            downloadhtml(this, filename){ result ->
+                runOnUiThread {
+                    // Stuff that updates the UI
+                    fileData.setText(result)
+                }
+            }
         })
 
     }
