@@ -6,8 +6,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import java.io.*
+//import android.widget.Toast
+//import java.io.*
 
 class fsrw_example : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,31 +17,12 @@ class fsrw_example : AppCompatActivity(){
         val fileName = findViewById<EditText>(R.id.editFile)
         val fileData = findViewById<EditText>(R.id.editData)
 
-        val btnSave = findViewById<Button>(R.id.btnSave)
         val btnView = findViewById<Button>(R.id.btnView)
 
-        btnSave.setOnClickListener(View.OnClickListener {
-            val file:String = fileName.text.toString()
-            val data:String = fileData.text.toString()
-//            val fileOutputStream:FileOutputStream
-//            try {
-//                fileOutputStream = openFileOutput(file, Context.MODE_PRIVATE)
-//                fileOutputStream.write(data.toByteArray())
-//            } catch (e: FileNotFoundException){
-//                e.printStackTrace()
-//            }catch (e: NumberFormatException){
-//                e.printStackTrace()
-//            }catch (e: IOException){
-//                e.printStackTrace()
-//            }catch (e: Exception){
-//                e.printStackTrace()
-//            }
 
-            fswrite(this, data, file)
-            Toast.makeText(applicationContext,"data save",Toast.LENGTH_LONG).show()
-            fileName.text.clear()
-            fileData.text.clear()
-        })
+        fun update_data(data: String){
+            fileData.setText(data)
+        }
 
         btnView.setOnClickListener(View.OnClickListener {
             val filename = fileName.text.toString()
@@ -60,8 +41,9 @@ class fsrw_example : AppCompatActivity(){
 //            }else{
 //                Toast.makeText(applicationContext,"file name cannot be blank",Toast.LENGTH_LONG).show()
 //            }
-            fileData.setText(fsread(this, filename))
+            downloadhtml(this, filename, update_data)
         })
 
     }
+
 }
