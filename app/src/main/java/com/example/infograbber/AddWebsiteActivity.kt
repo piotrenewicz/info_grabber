@@ -60,6 +60,8 @@ class AddWebsiteActivity : AppCompatActivity() {
             finish()
         }
 
+
+
         AddWebsiteButtonAdd.setOnClickListener {
             val websiteURL: String = AddWebsiteURL.text.toString()
             var websiteTitle: String = AddWebsiteTitle.text.toString()
@@ -91,6 +93,16 @@ class AddWebsiteActivity : AppCompatActivity() {
             }
 
         }
+        
+        AddWebsiteTest2.setOnClickListener{
+            //TO DO dla przycisk 2
+        }
+
+        AddWebsiteTest3.setOnClickListener{
+            //TO DO dla przycisk 3
+        }
+
+        //TextTest.text =  tu jakiś tekst dla pola tekstowego
 
         //   use like this:
 //

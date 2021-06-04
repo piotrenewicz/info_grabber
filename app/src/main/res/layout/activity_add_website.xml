@@ -44,14 +44,14 @@
         android:layout_marginRight="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AddName"
-        app:layout_constraintVertical_bias="0.172"
+        app:layout_constraintVertical_bias="0.05"
         tools:layout_editor_absoluteX="-30dp" />
 
     <EditText
         android:id="@+id/AddWebsiteURL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:hint="Enter website URL"
         android:layout_marginLeft="20dp"
@@ -65,7 +65,7 @@
         android:id="@+id/AddWebsiteSeconds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:digits="0123456789"
         android:gravity="center_horizontal"
         android:hint="Website refresh interval in seconds"
@@ -86,7 +86,7 @@
         android:textColor="@color/white"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="10dp"
         android:textColorHint="@color/linia"
         app:layout_constraintTop_toBottomOf="@+id/AddWebsiteSeconds"
         tools:layout_editor_absoluteX="0dp" />
@@ -120,10 +120,43 @@
 
     <Button
         android:id="@+id/AddWebsiteTest"
+        android:text="1"
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/AddWebsiteTest2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:text="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AddWebsiteTest" />
+
+    <Button
+        android:id="@+id/AddWebsiteTest3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/AddWebsiteTest2" />
+
+
+    <TextView
+        android:id="@+id/TextTest"
+        android:text="Tutaj jest pole z tekstem"
+        android:height="50dp"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/AddWebsiteHTMLCode"
+        app:layout_constraintTop_toBottomOf="@+id/AddWebsiteCommand"
+        tools:layout_editor_absoluteX="20dp"
+        android:gravity="center_horizontal" />
 
     <TextView
         android:id="@+id/AddWebsiteHTMLCode"
