@@ -9,7 +9,8 @@ import java.lang.Runtime
 fun syscall(commmand: String): String {
     var out: String
     try{
-        val process: Process = Runtime.getRuntime().exec(commmand)
+        val script: Array<String> = arrayOf("/system/bin/sh", "-c", commmand)
+        val process: Process = Runtime.getRuntime().exec(script)
         val std: BufferedReader = BufferedReader(InputStreamReader(process.inputStream))
         process.waitFor()
         out = std.readText()
@@ -25,6 +26,7 @@ fun syscall(commmand: String): String {
     }
     return out
 }
+
 
 fun filter_testing(){
     println("pretest")
