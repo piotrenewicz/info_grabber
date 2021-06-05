@@ -94,8 +94,11 @@ class AddWebsiteActivity : AppCompatActivity() {
 
         }
         
-        AddWebsiteTest2.setOnClickListener{
-            //TO DO dla przycisk 2
+        AddWebsiteTest2.setOnClickListener{ //TO DO dla przycisk 2
+//            println("button alive")
+//            filter_testing()
+//            println("button job done")
+            TextTest.text = syscall(AddWebsiteCommand.text.toString())
         }
 
         AddWebsiteTest3.setOnClickListener{
