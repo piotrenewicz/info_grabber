@@ -98,7 +98,9 @@ class AddWebsiteActivity : AppCompatActivity() {
 //            println("button alive")
 //            filter_testing()
 //            println("button job done")
-            TextTest.text = syscall(AddWebsiteCommand.text.toString())
+            html_inserter(this, AddWebsiteHTMLCode.text.toString(), AddWebsiteCommand.text.toString()){ output ->
+                TextTest.text = output
+            }
         }
 
         AddWebsiteTest3.setOnClickListener{

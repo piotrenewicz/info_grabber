@@ -5,10 +5,7 @@ import android.content.Context
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import java.io.FileInputStream
-import java.io.FileNotFoundException
-import java.io.FileOutputStream
-import java.io.IOException
+import java.io.*
 
 const val defaultFileName:String = "infoStorage.json"
 
@@ -56,6 +53,13 @@ fun fsread(c: Context, fileName: String = defaultFileName): String{
     return fsinit()
 }
 
+
+fun ramfs(c: Context, fileName: String, content: String, callback: (rampath: String) -> Unit){
+    val file: File = File.createTempFile(fileName, null, c.cacheDir)
+    file.writeText(content)
+    callback(c.cacheDir.toString() + "/" + file.name)
+    file.delete()
+}
 
 fun websiteListToJsonString(sites: List<Website>): String {
     return Json.encodeToString(sites)
