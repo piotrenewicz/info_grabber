@@ -61,26 +61,32 @@ fun ramfs(c: Context, fileName: String, content: String, callback: (rampath: Str
     file.delete()
 }
 
-fun websiteListToJsonString(sites: List<Website>): String {
+fun infoListToJsonString(sites: List<infoElement>): String {
     return Json.encodeToString(sites)
 }
 
-fun jsonStringToWebsiteList(jstr:String): MutableList<Website> {
+fun jsonStringToInfoList(jstr:String): MutableList<infoElement> {
     return Json.decodeFromString(jstr)
 }
 
 // USE THIS THING TO LOAD YOUR LIST OF WEBSITES my brothers.
-fun readWebsiteList(c:Context, fileName: String=defaultFileName):MutableList<Website>{
-    return jsonStringToWebsiteList(fsread(c,fileName))
+fun readInfoList(c:Context, fileName: String=defaultFileName):MutableList<infoElement>{
+    return jsonStringToInfoList(fsread(c,fileName))
 }
 
-fun writeWebsite(c:Context, site:Website, fileName: String=defaultFileName){
-    val list:MutableList<Website> = readWebsiteList(c)
-    println("GOT DATA $list")
-    list.add(site)
-
-    val dataString = websiteListToJsonString(list)
-    fswrite(c,dataString,fileName)
-    println("DATAAAA $dataString")
-
+fun writeInfoList(c: Context, infoList: MutableList<infoElement>, fileName: String= defaultFileName){
+   fswrite(c, infoListToJsonString(infoList), fileName)
 }
+
+fun appendInfoElement(c:Context, el:infoElement, fileName: String=defaultFileName){
+    val list:MutableList<infoElement> = readInfoList(c, fileName)
+//    println("GOT DATA $list")
+    list.add(el)
+    writeInfoList(c, list, fileName)
+}
+
+//fun getInfoElement(c:Context, idx: Int)
+// is the id in WebsiteAdapter predicatable?
+// there should be funs allowing to load infoEl, for edit.
+// update infoEl, after edit
+// and remove infoEl.

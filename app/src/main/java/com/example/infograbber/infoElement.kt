@@ -4,8 +4,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class Website(val title: String,
+data class infoElement(val title: String,
                    val URL:String,
                    val awlCommand: String = "",
-                   val domain: String = "https://www.example.com",
-                   var isChecked: Boolean = false)
+                   val domain: String = "https://www.example.com")

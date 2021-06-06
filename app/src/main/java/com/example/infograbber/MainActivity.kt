@@ -6,17 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var WebsiteAdapter: WebsiteAdapter
+    private lateinit var infoListDisplay: infoListDisplay
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        WebsiteAdapter = WebsiteAdapter(mutableListOf())
-        AppWebsiteList.adapter = WebsiteAdapter
+        infoListDisplay = infoListDisplay()
+        AppWebsiteList.adapter = infoListDisplay
         AppWebsiteList.layoutManager = LinearLayoutManager(this)
 
         AppAddButton.setOnClickListener{
-            val intent = Intent(this, AddWebsiteActivity::class.java)
+            val intent = Intent(this, AddInfoSourceActivity::class.java)
             startActivity(intent)
         }
 
@@ -24,10 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        val websites = readWebsiteList(applicationContext)
-        for (site in websites)
-        {
-            WebsiteAdapter.addWebsite(site)
-        }
+        infoListDisplay.loadInfoList(this)
+        infoListDisplay.refreshAllInfo(this)
     }
+
+//    Refresh_button.setOnClickEvent{
+//        infoListDisplay.refreshAllInfo(this)
+//    }
 }

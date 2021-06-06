@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/AddName"
+        android:id="@+id/ActivityName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -19,7 +19,7 @@
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AddWebsiteReturn"
+        app:layout_constraintStart_toEndOf="@+id/ActivityReturn_button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
@@ -29,11 +29,11 @@
         android:layout_height="1px"
         android:background="@color/linia"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddName" />
+        app:layout_constraintTop_toBottomOf="@+id/ActivityName" />
 
 
     <EditText
-        android:id="@+id/AddWebsiteTitle"
+        android:id="@+id/InfoTitle_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -43,12 +43,12 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddName"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityName"
         app:layout_constraintVertical_bias="0.05"
         tools:layout_editor_absoluteX="-30dp" />
 
     <EditText
-        android:id="@+id/AddWebsiteURL"
+        android:id="@+id/WebsiteURL_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -62,7 +62,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <EditText
-        android:id="@+id/AddWebsiteCommand"
+        android:id="@+id/Command_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -72,11 +72,11 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
         android:textColorHint="@color/linia"
-        app:layout_constraintTop_toBottomOf="@+id/AddWebsiteSeconds"
+        app:layout_constraintTop_toBottomOf="@+id/WebsiteURL_field"
         tools:layout_editor_absoluteX="0dp" />
 
     <Button
-        android:id="@+id/AddWebsiteButtonAdd"
+        android:id="@+id/Save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
@@ -91,7 +91,7 @@
         />
 
     <ImageButton
-        android:id="@+id/AddWebsiteReturn"
+        android:id="@+id/ActivityReturn_button"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/AddWebsiteTest"
+        android:id="@+id/Fetch_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -114,7 +114,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/AddWebsiteTest3"
+        android:id="@+id/DeleteInfo_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -122,10 +122,10 @@
         android:layout_marginBottom="292dp"
         android:text="3"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AddWebsiteTest2" />
+        app:layout_constraintStart_toEndOf="@+id/ExecuteCommand_button" />
 
     <Button
-        android:id="@+id/AddWebsiteTest2"
+        android:id="@+id/ExecuteCommand_button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
@@ -133,28 +133,28 @@
         android:layout_marginBottom="292dp"
         android:text="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/AddWebsiteTest" />
+        app:layout_constraintStart_toEndOf="@+id/Fetch_button" />
 
 
     <TextView
-        android:id="@+id/TextTest"
+        android:id="@+id/CommandResult_field"
         android:text="Tutaj jest pole z tekstem"
         android:height="50dp"
         android:textColor="@color/white"
         android:textSize="30dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/AddWebsiteHTMLCode"
-        app:layout_constraintTop_toBottomOf="@+id/AddWebsiteCommand"
+        app:layout_constraintBottom_toTopOf="@+id/FetchResult_field"
+        app:layout_constraintTop_toBottomOf="@+id/ExecuteCommand_button"
         tools:layout_editor_absoluteX="20dp"
         android:gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/AddWebsiteHTMLCode"
+        android:id="@+id/FetchResult_field"
         android:layout_width="match_parent"
         android:layout_height="210dp"
-        app:layout_constraintBottom_toTopOf="@+id/AddWebsiteButtonAdd"
-        app:layout_constraintTop_toBottomOf="@+id/AddWebsiteCommand"
+        app:layout_constraintBottom_toTopOf="@+id/Save_button"
+        app:layout_constraintTop_toBottomOf="@+id/ExecuteCommand_button"
         app:layout_constraintVertical_bias="1.0"
         tools:layout_editor_absoluteX="-56dp" />
 
