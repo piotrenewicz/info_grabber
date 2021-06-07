@@ -9,7 +9,22 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.info_display_item.view.*
 
 class infoListDisplay() : RecyclerView.Adapter<infoListDisplay.infoViewHolder>() {
-    class infoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class infoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener, View.OnLongClickListener {
+        init {
+        itemView.setOnClickListener(this)
+        itemView.setOnLongClickListener(this)
+    }
+
+        override fun onClick(view: View) {
+
+        }
+
+        override fun onLongClick(view: View): Boolean {
+            // this.layoutPosition <- to jest index od 0 i dalej
+            println("HERE ${this.layoutPosition}")
+            return true
+        }
+    }
     private var infoList: MutableList<infoElement> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): infoViewHolder {
