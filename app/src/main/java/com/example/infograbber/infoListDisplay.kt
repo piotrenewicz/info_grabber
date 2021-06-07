@@ -2,13 +2,18 @@ package com.example.infograbber
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.info_display_item.view.*
 
-class infoListDisplay() : RecyclerView.Adapter<infoListDisplay.infoViewHolder>() {
+
+class infoListDisplay(var c:Context) : RecyclerView.Adapter<infoListDisplay.infoViewHolder>() {
     inner class infoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),View.OnClickListener, View.OnLongClickListener {
         init {
         itemView.setOnClickListener(this)
@@ -20,8 +25,15 @@ class infoListDisplay() : RecyclerView.Adapter<infoListDisplay.infoViewHolder>()
         }
 
         override fun onLongClick(view: View): Boolean {
-            // this.layoutPosition <- to jest index od 0 i dalej
             println("HERE ${this.layoutPosition}")
+
+            val intent = Intent(view.context, InfoItemEdit::class.java)
+            intent.flags = FLAG_ACTIVITY_NEW_TASK
+            val b = Bundle()
+            b.putInt("key", 1) //Your id
+
+            intent.putExtras(b) //Put your id to your next Intent
+            c.startActivity(intent)
             return true
         }
     }
