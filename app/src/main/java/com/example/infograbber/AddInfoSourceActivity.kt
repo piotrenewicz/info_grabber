@@ -85,8 +85,14 @@ class AddInfoSourceActivity : AppCompatActivity() {
             }
         }
 
-        DeleteInfo_button.setOnClickListener{
-            //TO DO dla przycisk 3
+        DeleteInfo_button.setOnClickListener{ //TO DO dla przycisk 3
+            // I'm just gonna use this for testing.
+
+            updateInfoList(this){ infoList ->
+                infoList.removeAt(0)
+            }
+
+
         }
 
         //TextTest.text =  tu jakiś tekst dla pola tekstowego

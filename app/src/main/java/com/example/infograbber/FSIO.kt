@@ -61,6 +61,16 @@ fun ramfs(c: Context, fileName: String, content: String, callback: (rampath: Str
     file.delete()
 }
 
+fun updateInfoList(c: Context, fileName: String = defaultFileName, callback: (infoList: MutableList<infoElement>) -> Unit){
+    val infoList:MutableList<infoElement> = Json.decodeFromString(fsread(c, fileName))
+    callback(infoList)
+    fswrite(c, Json.encodeToString(infoList), fileName)
+}
+
+
+
+
+
 fun infoListToJsonString(sites: List<infoElement>): String {
     return Json.encodeToString(sites)
 }
@@ -79,10 +89,14 @@ fun writeInfoList(c: Context, infoList: MutableList<infoElement>, fileName: Stri
 }
 
 fun appendInfoElement(c:Context, el:infoElement, fileName: String=defaultFileName){
-    val list:MutableList<infoElement> = readInfoList(c, fileName)
-//    println("GOT DATA $list")
-    list.add(el)
-    writeInfoList(c, list, fileName)
+    updateInfoList(c, fileName){ infoList ->
+        infoList.add(el)
+    }
+
+//    val list:MutableList<infoElement> = readInfoList(c, fileName)
+////    println("GOT DATA $list")
+//    list.add(el)
+//    writeInfoList(c, list, fileName)
 }
 
 //fun getInfoElement(c:Context, idx: Int)
