@@ -77,6 +77,12 @@ fun appendInfoElement(c:Context, el:infoElement, fileName: String=defaultFileNam
     }
 }
 
+fun updateInfoElement(c:Context,index:Int, el:infoElement, fileName: String=defaultFileName) {
+    updateInfoList(c, fileName) { infoList ->
+        infoList[index] = el
+    }
+}
+
 fun getInfoEl(c: Context, index: Int, fileName: String = defaultFileName): infoElement {
     return readInfoList(c, fileName)[index]
 }

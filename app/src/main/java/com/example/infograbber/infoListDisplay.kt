@@ -25,14 +25,13 @@ class infoListDisplay(var c:Context) : RecyclerView.Adapter<infoListDisplay.info
         }
 
         override fun onLongClick(view: View): Boolean {
-            println("HERE ${this.layoutPosition}")
+            println("POSITION ${this.layoutPosition}")
 
-            val intent = Intent(view.context, InfoItemEdit::class.java)
+            val intent = Intent(view.context, AddInfoSourceActivity::class.java)
             intent.flags = FLAG_ACTIVITY_NEW_TASK
             val b = Bundle()
-            b.putInt("key", 1) //Your id
-
-            intent.putExtras(b) //Put your id to your next Intent
+            b.putInt("info_item_index", this.layoutPosition)
+            intent.putExtras(b)
             c.startActivity(intent)
             return true
         }

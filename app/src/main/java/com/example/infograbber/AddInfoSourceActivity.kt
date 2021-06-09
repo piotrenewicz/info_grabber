@@ -3,12 +3,10 @@ package com.example.infograbber
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import kotlinx.android.synthetic.main.activity_add_info_source.*
-import kotlinx.android.synthetic.main.activity_main.*
-import java.lang.NullPointerException
 
 class AddInfoSourceActivity : AppCompatActivity() {
+    var info_item_index = -1
     //private lateinit var WebsiteAdapter: WebsiteAdapter
 
 //    private suspend fun getWebsiteSource(context: Context, URL: String): Document? = try {
@@ -34,9 +32,24 @@ class AddInfoSourceActivity : AppCompatActivity() {
         "Unknown domain"
     }
 
+    private fun fillForIndex(index:Int){
+        if (index!=-1){
+            val infoItem = getInfoEl(applicationContext, index)
+            InfoTitle_field.setText(infoItem.title)
+            WebsiteURL_field.setText(infoItem.URL)
+            Command_field.setText(infoItem.awlCommand)
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_info_source)
+
+        if (intent.extras != null) info_item_index = intent.extras!!.getInt("info_item_index") else -1
+        println("GOT KEY: $info_item_index")
+
+        fillForIndex(info_item_index)
 
         //WebsiteAdapter = WebsiteAdapter(mutableListOf())
         //AppWebsiteList.adapter = WebsiteAdapter
@@ -55,7 +68,11 @@ class AddInfoSourceActivity : AppCompatActivity() {
             val command: String = Command_field.text.toString()
 
             val infoEl = infoElement(infoTitle, websiteURL, command,  websiteDomain)
+            if (info_item_index!= -1){
+                updateInfoElement(applicationContext,info_item_index, infoEl)
+            }else{
             appendInfoElement(applicationContext, infoEl)
+            }
             //Clearing out input fields
             WebsiteURL_field.text.clear()
             InfoTitle_field.text.clear()
