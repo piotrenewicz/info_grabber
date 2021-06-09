@@ -82,11 +82,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Save \nWebsite"
+        android:text="Save"
         android:backgroundTint="@color/black"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="20dp"
-        android:textSize="15dp"
+        android:textSize="20dp"
+        android:padding="15dp"
+        android:width="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -122,8 +124,10 @@
         android:layout_marginRight="25dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/black"
-        android:text="Delete first \nwebsite"
-        android:textSize="15dp"
+        android:text="Delete"
+        android:textSize="20dp"
+        android:padding="15dp"
+        android:width="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Save_button" />
 

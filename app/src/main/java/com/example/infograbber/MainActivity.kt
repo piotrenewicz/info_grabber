@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         infoListDisplay.refreshAllInfo(this)
     }
 
-    Refresh_button.setOnClickEvent{
-        infoListDisplay.refreshAllInfo(this)
-    }
+//    Refresh_button.setOnClickEvent{
+//        infoListDisplay.refreshAllInfo(this)
+//    }
 }
