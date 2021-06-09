@@ -15,8 +15,6 @@
         android:theme="@style/Theme.InfoGrabber"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".InfoItemEdit"
-            android:parentActivityName=".MainActivity"></activity>
         <activity
             android:name=".AddInfoSourceActivity"
             android:label="@string/title_activity_add_website"
