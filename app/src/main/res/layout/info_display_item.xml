@@ -8,27 +8,28 @@
 
     <TextView
         android:id="@+id/InfoTitle_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_width="340dp"
+        android:layout_height="29dp"
         android:width="200dp"
         android:paddingLeft="20dp"
         android:text="Example "
-        android:textColor="@color/linia"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/InfoContent_field"
-        app:layout_constraintStart_toStartOf="@+id/WebsiteDomain"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/WebsiteDomain"
-        android:layout_width="109dp"
-        android:layout_height="26dp"
+        android:layout_width="174dp"
+        android:layout_height="15dp"
         android:paddingLeft="20dp"
         android:text="example.com"
         android:textColor="@color/linia"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/InfoTitle_field" />
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="match_parent"
@@ -40,19 +41,13 @@
 
     <TextView
         android:id="@+id/InfoContent_field"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="392dp"
+        android:layout_height="59dp"
+        android:gravity="left"
         android:text="..."
-        android:layout_marginLeft="200dp"
         android:textColor="@color/white"
-        android:textSize="15sp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="left" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
