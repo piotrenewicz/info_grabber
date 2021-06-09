@@ -68,9 +68,9 @@ class AddInfoSourceActivity : AppCompatActivity() {
                 runOnUiThread {
                     if(result.isNullOrEmpty()){
                         Toast.makeText(this, "Error fetching URL", Toast.LENGTH_LONG).show()
-                        FetchResult_field.text = "Err"
+                        BigResult_field.text = "Err"
                     }else{
-                        FetchResult_field.text = result
+                        BigResult_field.text = result
                     }
                 }
             }
@@ -78,10 +78,14 @@ class AddInfoSourceActivity : AppCompatActivity() {
         }
 
         ExecuteCommand_button.setOnClickListener{
-            val html: String = FetchResult_field.text.toString()
+            val url: String = WebsiteURL_field.text.toString()
             val command: String = Command_field.text.toString()
-            syscall_with_html(this, html, command){ output ->
-                CommandResult_field.text = output
+            println("$url, $command")
+            syscall_smart(this, command, url){ output ->
+                println("execution done: $output")
+                runOnUiThread {
+                    BigResult_field.text = output
+                }
             }
         }
 

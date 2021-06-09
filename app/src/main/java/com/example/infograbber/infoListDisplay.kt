@@ -56,18 +56,9 @@ class infoListDisplay(var c:Context) : RecyclerView.Adapter<infoListDisplay.info
     fun refreshAllInfo(a: Activity){
         val c: Context = a
         infoList.forEachIndexed{ index, infoEl ->
-            downloadhtml(c, infoEl.URL){ result ->
-                if (result != null) {
-                    syscall_with_html(c, result, infoEl.awlCommand){ output ->
-                        a.runOnUiThread {
-                            notifyItemChanged(index, output)
-                        }
-                    }
-                }else{
-                    val output: String = syscall(infoEl.awlCommand)
-                    a.runOnUiThread{
-                        notifyItemChanged(index, output)
-                    }
+            syscall_smart(c, infoEl.awlCommand, infoEl.URL){ content ->
+                a.runOnUiThread{
+                    notifyItemChanged(index, content)
                 }
             }
         }

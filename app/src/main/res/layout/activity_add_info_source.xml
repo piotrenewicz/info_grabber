@@ -135,22 +135,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/Fetch_button" />
 
-
     <TextView
-        android:id="@+id/CommandResult_field"
-        android:text="Tutaj jest pole z tekstem"
-        android:height="50dp"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/FetchResult_field"
-        app:layout_constraintTop_toBottomOf="@+id/ExecuteCommand_button"
-        tools:layout_editor_absoluteX="20dp"
-        android:gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/FetchResult_field"
+        android:id="@+id/BigResult_field"
         android:layout_width="match_parent"
         android:layout_height="210dp"
         app:layout_constraintBottom_toTopOf="@+id/Save_button"
