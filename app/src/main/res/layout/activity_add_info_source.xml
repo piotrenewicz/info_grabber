@@ -15,7 +15,7 @@
         android:paddingLeft="10dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text="InfoGrabber"
+        android:text="Add website"
         android:textColor="@color/white"
         android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,53 +39,54 @@
         android:gravity="center_horizontal"
         android:hint="Enter website name (optional)"
         android:textColor="@color/white"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:textColorHint="@color/linia"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ActivityName"
-        app:layout_constraintVertical_bias="0.05"
-        tools:layout_editor_absoluteX="-30dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ActivityName" />
 
     <EditText
         android:id="@+id/WebsiteURL_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="100dp"
         android:gravity="center_horizontal"
         android:hint="Enter website URL"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:textColor="@color/white"
         android:textColorHint="@color/linia"
-        app:layout_constraintTop_toBottomOf="@+id/InfoTitle_field"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/InfoTitle_field" />
 
     <EditText
         android:id="@+id/Command_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="10dp"
         android:gravity="center_horizontal"
         android:hint="Enter awl parse command"
         android:textColor="@color/white"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
         android:textColorHint="@color/linia"
-        app:layout_constraintTop_toBottomOf="@+id/WebsiteURL_field"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WebsiteURL_field" />
 
     <Button
         android:id="@+id/Save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:text="Add Website"
+        android:text="Save \nWebsite"
         android:backgroundTint="@color/black"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="20dp"
         android:textSize="15dp"
-        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
@@ -104,45 +105,65 @@
 
     <Button
         android:id="@+id/Fetch_button"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="292dp"
-        android:text="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:text="Fetch"
+        android:textSize="15dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/WebsiteURL_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/WebsiteURL_field"
+        app:layout_constraintTop_toTopOf="@+id/WebsiteURL_field" />
 
     <Button
         android:id="@+id/DeleteInfo_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="292dp"
-        android:text="3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/black"
+        android:text="Delete first \nwebsite"
+        android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ExecuteCommand_button" />
+        app:layout_constraintEnd_toStartOf="@+id/Save_button" />
 
     <Button
         android:id="@+id/ExecuteCommand_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="292dp"
-        android:text="2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Fetch_button" />
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Run"
+        android:textSize="15dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/Command_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Command_field"
+        app:layout_constraintTop_toTopOf="@+id/Command_field" />
 
-    <TextView
-        android:id="@+id/BigResult_field"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        app:layout_constraintBottom_toTopOf="@+id/Save_button"
-        app:layout_constraintTop_toBottomOf="@+id/ExecuteCommand_button"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="-56dp" />
+        android:layout_height="0dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ExecuteCommand_button">
+
+        <TextView
+            android:id="@+id/BigResult_field"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="100dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
