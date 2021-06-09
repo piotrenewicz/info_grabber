@@ -67,6 +67,11 @@ fun updateInfoList(c: Context, fileName: String = defaultFileName, callback: (in
     fswrite(c, Json.encodeToString(infoList), fileName)
 }
 
+fun getInfoEl(c: Context, index: Int, fileName: String = defaultFileName): infoElement {
+    val infoList: MutableList<infoElement> = Json.decodeFromString(fsread(c, fileName))
+    return infoList[index]
+}
+
 
 
 
