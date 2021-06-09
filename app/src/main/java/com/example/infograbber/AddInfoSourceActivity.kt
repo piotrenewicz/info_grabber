@@ -67,11 +67,21 @@ class AddInfoSourceActivity : AppCompatActivity() {
             val websiteDomain: String = findWebsiteDomain(websiteURL)
             val command: String = Command_field.text.toString()
 
+            if (infoTitle.isEmpty() and websiteURL.isNotEmpty()){
+                suspend {                /// here problem Konrad, Do Coroutine Scope Dispatcher IO, and wait.
+                    println("tring to gen")
+                    val WebTitle: String? = getWebsiteTitle(applicationContext, websiteURL)
+                    if (!WebTitle.isNullOrEmpty()){
+                        infoTitle = WebTitle
+                    }
+                }
+            }
+            println("see ya suckez")
             val infoEl = infoElement(infoTitle, websiteURL, command,  websiteDomain)
             if (info_item_index!= -1){
                 updateInfoElement(applicationContext,info_item_index, infoEl)
             }else{
-            appendInfoElement(applicationContext, infoEl)
+                appendInfoElement(applicationContext, infoEl)
             }
             //Clearing out input fields
             WebsiteURL_field.text.clear()
@@ -97,7 +107,7 @@ class AddInfoSourceActivity : AppCompatActivity() {
         ExecuteCommand_button.setOnClickListener{
             val url: String = WebsiteURL_field.text.toString()
             val command: String = Command_field.text.toString()
-            println("$url, $command")
+//            println("$url, $command")
             syscall_smart(this, command, url){ output ->
                 runOnUiThread {
                     BigResult_field.text = output
