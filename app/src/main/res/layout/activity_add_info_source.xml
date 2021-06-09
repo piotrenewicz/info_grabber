@@ -79,15 +79,17 @@
 
     <Button
         android:id="@+id/Save_button"
-        android:layout_width="103dp"
-        android:layout_height="49dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/black"
         android:gravity="center_horizontal"
         android:text="Save"
         android:textColor="@color/white"
-        android:textSize="15dp"
+        android:textSize="20dp"
+        android:padding="15dp"
+        android:width="120dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -124,7 +126,9 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/black"
         android:text="Delete"
-        android:textSize="15dp"
+        android:textSize="20dp"
+        android:padding="15dp"
+        android:width="120dp"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Save_button" />
