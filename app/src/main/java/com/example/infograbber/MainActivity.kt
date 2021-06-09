@@ -20,6 +20,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        Refresh_button.setOnClickListener{
+            infoListDisplay.refreshAllInfo(this)
+        }
     }
 
     override fun onStart() {
@@ -28,7 +31,5 @@ class MainActivity : AppCompatActivity() {
         infoListDisplay.refreshAllInfo(this)
     }
 
-    Refresh_button.setOnClickEvent{
-        infoListDisplay.refreshAllInfo(this)
-    }
+
 }
