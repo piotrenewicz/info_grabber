@@ -1,6 +1,7 @@
 package com.example.infograbber
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_add_info_source.*
@@ -122,14 +123,16 @@ class AddInfoSourceActivity : AppCompatActivity() {
             }
         }
 
-        DeleteInfo_button.setOnClickListener{ //TO DO dla przycisk 3
-            // I'm just gonna use this for testing.
-
+        if (info_item_index == -1){
+            DeleteInfo_button.visibility = View.INVISIBLE
+        }else{
+            DeleteInfo_button.visibility = View.VISIBLE
+        }
+        DeleteInfo_button.setOnClickListener{
             updateInfoList(this){ infoList ->
-                infoList.removeAt(0)
+                infoList.removeAt(info_item_index)
             }
-
-
+            finish()
         }
 
         //TextTest.text =  tu jakiś tekst dla pola tekstowego
