@@ -4,6 +4,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_add_info_source.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 class AddInfoSourceActivity : AppCompatActivity() {
     var info_item_index = -1
@@ -68,12 +72,14 @@ class AddInfoSourceActivity : AppCompatActivity() {
             val command: String = Command_field.text.toString()
 
             if (infoTitle.isEmpty() and websiteURL.isNotEmpty()){
-                suspend {                /// here problem Konrad, Do Coroutine Scope Dispatcher IO, and wait.
-                    println("tring to gen")
-                    val WebTitle: String? = getWebsiteTitle(applicationContext, websiteURL)
-                    if (!WebTitle.isNullOrEmpty()){
-                        infoTitle = WebTitle
-                    }
+                runBlocking {
+                    CoroutineScope(Dispatchers.IO).launch {              /// here problem Konrad, Do Coroutine Scope Dispatcher IO, and wait.
+                        println("tring to gen")
+                        val WebTitle: String? = getWebsiteTitle(applicationContext, websiteURL)
+                        if (!WebTitle.isNullOrEmpty()){
+                            infoTitle = WebTitle
+                        }
+                    }.join()
                 }
             }
             println("see ya suckez")
@@ -87,6 +93,7 @@ class AddInfoSourceActivity : AppCompatActivity() {
             WebsiteURL_field.text.clear()
             InfoTitle_field.text.clear()
             Command_field.text.clear()
+            finish()
         }
 
         Fetch_button.setOnClickListener{
