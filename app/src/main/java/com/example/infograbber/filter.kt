@@ -15,15 +15,10 @@ fun syscall(commmand: String): String {
     try{
         val script: Array<String> = arrayOf("/system/bin/sh", "-c", commmand)
         val process: Process = Runtime.getRuntime().exec(script)
-        val stdout: BufferedReader = BufferedReader(InputStreamReader(process.inputStream))
-        process.waitFor()
+        val stdout = BufferedReader(InputStreamReader(process.inputStream))
+
         output = stdout.readText()
-//        println("""
-//            !Command run!""".trimIndent())
-//        println(commmand)
-//        println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
-//        println(out)
-//        println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n")
+
     }catch (e: IOException){
         e.printStackTrace();
         output = e.toString()
