@@ -82,7 +82,6 @@ class AddInfoSourceActivity : AppCompatActivity() {
             val command: String = Command_field.text.toString()
             println("$url, $command")
             syscall_smart(this, command, url){ output ->
-                println("execution done: $output")
                 runOnUiThread {
                     BigResult_field.text = output
                 }

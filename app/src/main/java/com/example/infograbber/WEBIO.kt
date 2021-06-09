@@ -15,7 +15,7 @@ import org.jsoup.nodes.Document
 
 private suspend fun getWebsiteSource(context: Context, URL: String): Document? = try {
     val doc: Document = Jsoup.connect(URL).get()
-    println(doc.title())
+//    println(doc.title())
     doc
 }catch(e: Exception){
     e.printStackTrace()
@@ -34,7 +34,7 @@ fun downloadhtml(c: Context, URL: String, callback: (result: String?) -> Unit) {
         } else {
             result = websiteSource.html()
         }
-        println("Website: $result")
+//        println("Website: $result")
         callback.invoke(result)
     }
 }

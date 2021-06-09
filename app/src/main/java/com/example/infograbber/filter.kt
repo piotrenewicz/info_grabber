@@ -40,7 +40,6 @@ fun syscall_smart(c: Context, command: String, url: String?, callback: (content:
         // we aren't trying to download, just mask html call and run command then
         val rc: String = "alias html=\"echo 'Error: URL was not supplied!'\"\n$command\n"
         CoroutineScope(Dispatchers.IO).launch() {
-            println("execution steering")
             callback(syscall(rc))
         }
         return
