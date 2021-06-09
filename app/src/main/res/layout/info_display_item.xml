@@ -22,15 +22,15 @@
 
     <TextView
         android:id="@+id/WebsiteDomain"
-        android:layout_width="174dp"
-        android:layout_height="15dp"
+        android:layout_width="177dp"
+        android:layout_height="17dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:gravity="right"
         android:paddingLeft="20dp"
         android:text="example.com"
         android:textColor="@color/linia"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
